@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  position: sticky;
+}
+/* NAV BAR -----------------------------*/
+.navBar {
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  background-color: black;
+  padding: 20px;
+}
+
+.hamburguerIcon {
+  display: flex;
+  position: absolute;
+  right: 20px;
+  flex-direction: column;
+  height: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.ham_top {
+  height: 0;
+  width: 39px;
+  border: 2.5px solid white;
+  border-radius: 50px;
+}
+
+.ham_bottom {
+  height: 0;
+  width: 25px;
+  border: 2.5px solid white;
+  border-radius: 50px;
+}
+/* -------------------------------------------------- */
+/* NAV MENU-------------------------------------------------- */
+.navMenu {
+  width: 100vw;
+  height: 500px;
+  background-color: red;
+  position: relative;
+  left: 100vw;
+  transition: 1s;
+}
+/* -------------------------------------------------- */
