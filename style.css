@@ -100,17 +100,32 @@ h1 {
   /* top: 10px; */
   background-color: yellow;
   scroll-snap-align: start;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 .image-container {
-  background-image: url("images/projects/light_bulb_image.png");
   width: 100%;
   min-height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #5458be;
+}
+
+#project1 .image-container {
+  background-image: url("images/projects/light_bulb_image.png");
+}
+
+#project2 .image-container {
+  background-image: url("images/projects/neda_art_image.png");
+}
+
+#project3 .image-container {
+  background-image: url("images/projects/huset_image.png");
+}
+
+#project4 .image-container {
+  background-image: url("images/projects/monty_python_image.png");
 }
 
 .description-container {
@@ -193,19 +208,50 @@ h1 {
 .projectAnimation {
   animation: showProject 0.5s 0s forwards;
   display: block;
-  position: sticky;
+  /* position: sticky; */
   z-index: 90;
   top: var(--navHeight);
+  margin: 0 auto;
+  position: relative;
+  width: 70%;
+
+  bottom: 0px;
 }
 
 @keyframes showProject {
-  to {
+  0% {
+    /* width: 100%; */
+    /* position: absolute; */
+    position: relative;
+    top: 0;
+  }
+  30% {
+    /* width: 100%; */
+    /* position: absolute; */
+    position: relative;
+    top: 0;
+  }
+  70% {
+    height: calc(100vh - var(--navHeight));
+    /* position: absolute; */
+    position: relative;
+    width: 100%;
+    top: 0;
+  }
+  90% {
+    /* position: absolute; */
+    /* top: 20px; */
+    position: relative;
+    /* bottom: 100px; */
+    top: 0;
+  }
+  100% {
+    position: fixed;
     width: 100%;
     height: calc(100vh - var(--navHeight));
     padding: 10px;
     overflow: scroll;
     border-radius: 0;
-    margin: 0 auto;
   }
 }
 
@@ -216,7 +262,7 @@ h1 {
   padding: 10px;
   overflow: scroll;
   border-radius: 0;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 @keyframes closeProject {
