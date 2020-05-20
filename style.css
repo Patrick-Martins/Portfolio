@@ -163,115 +163,66 @@ h1 {
   opacity: 0;
 }
 
-@keyframes hideDesc {
+section.main-content,
+aside {
+  /* height: 100vh;
+  width: 100%; */
+  width: 100%;
+  min-height: 1000px;
+  /* width: 100%;
+  height: 100%; */
+  position: absolute;
 }
 
-.showDescription {
-  /* animation: showDesc 0.5s 0.5s forwards; */
-  opacity: 1;
+body {
+  perspective: 0px;
+  /* width: 400px;
+  height: 400px; */
+  margin: 10px auto;
+}
+main {
+  width: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left;
 }
 
-@keyframes showDesc {
+section.main-content {
+  transform: translateZ(100%);
 }
-
-.textAnimation {
-  animation: showText 0.5s 0.5s forwards;
+aside {
   display: block;
-  min-height: 0;
-  opacity: 0;
+  transform: rotateY(90deg) translateX(100%);
+  transform-origin: right;
+  background-color: orange;
 }
 
-@keyframes showText {
+.revealMain {
+  animation: showMain 1s ease-out forwards;
+}
+
+.revealAside {
+  animation: showAside 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes showMain {
   from {
-    opacity: 0;
+    transform: rotateY(-90deg);
   }
   to {
-    opacity: 1;
-    background-color: gainsboro;
+    transform: rotateY(0deg);
   }
 }
 
-.closeTextAnimation {
-  animation: hideText 0.5s 0s forwards;
-  opacity: 1;
-  display: none;
-  /* min-height: none; */
-}
-
-@keyframes hideText {
-  to {
-    height: 0;
-    opacity: 0;
-  }
-}
-
-.projectAnimation {
-  animation: showProject 0.5s 0s forwards;
-  display: block;
-  /* position: sticky; */
-  z-index: 90;
-  top: var(--navHeight);
-  margin: 0 auto;
-  position: relative;
-  width: 70%;
-
-  bottom: 0px;
-}
-
-@keyframes showProject {
+@keyframes showAside {
   0% {
-    /* width: 100%; */
-    /* position: absolute; */
-    position: relative;
-    top: 0;
+    scale: 1;
+    transform: rotateY(0deg);
   }
   30% {
-    /* width: 100%; */
-    /* position: absolute; */
-    position: relative;
-    top: 0;
-  }
-  70% {
-    height: calc(100vh - var(--navHeight));
-    /* position: absolute; */
-    position: relative;
-    width: 100%;
-    top: 0;
-  }
-  90% {
-    /* position: absolute; */
-    /* top: 20px; */
-    position: relative;
-    /* bottom: 100px; */
-    top: 0;
+    scale: 0.7;
   }
   100% {
-    position: fixed;
-    width: 100%;
-    height: calc(100vh - var(--navHeight));
-    padding: 10px;
-    overflow: scroll;
-    border-radius: 0;
-  }
-}
-
-.closeAnimation {
-  animation: closeProject 0.5s 0s forwards;
-  width: 100%;
-  height: calc(100vh - var(--navHeight));
-  padding: 10px;
-  overflow: scroll;
-  border-radius: 0;
-  margin: 50px auto;
-}
-
-@keyframes closeProject {
-  to {
-    display: block;
-    position: relative;
-    height: 263px;
-    width: 350px;
-    overflow: hidden;
-    border-radius: 10px;
+    transform: rotateY(-90deg);
+    scale: 1;
   }
 }

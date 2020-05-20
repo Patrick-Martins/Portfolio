@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   sideMenu();
+  aside();
 }
 
 function sideMenu() {
@@ -27,4 +28,11 @@ function changeStatus(evt) {
   hamburger.style.display = "block";
   topBar.style.transform = "rotate(-45deg)";
   bottomBar.style.transform = "rotate(45deg)";
+}
+
+function aside() {
+  document.querySelector("aside").addEventListener("click", () => {
+    document.querySelector("main").classList.remove("revealAside");
+    document.querySelector("main").classList.add("showMain");
+  });
 }
