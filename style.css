@@ -16,16 +16,21 @@ main {
   scroll-behavior: smooth;
 }
 
+body {
+  padding: 10px;
+}
+
 .navigation {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 /* NAV BAR -----------------------------*/
 .navBar {
+  width: 100%;
   height: var(--navHeight);
   display: flex;
   flex-direction: row;
@@ -37,8 +42,9 @@ main {
 
 .hamburguerIcon {
   display: flex;
-  position: absolute;
-  right: 20px;
+  /* position: absolute; */
+  margin-right: 0;
+  margin-left: auto;
   flex-direction: column;
   height: 20px;
   align-items: flex-end;
@@ -84,6 +90,44 @@ h1 {
   z-index: 1;
   font-size: 30;
   font-weight: 700;
+}
+
+.intro-section {
+  height: calc(100vh - var(--navHeight));
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.intro-text {
+  display: flex;
+  align-items: center;
+  width: 50vw;
+  height: 50vh;
+  position: relative;
+  left: 25vw;
+  top: 25vh;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* margin: auto;
+  margin-top: 100px; */
+  z-index: 10;
+}
+.intro-text h2 {
+  text-align: center;
+  width: 100%;
+  font-size: 40px;
+}
+
+svg#Lines {
+  display: block;
+  position: relative;
+  width: 140%;
+  height: 100%;
+  bottom: 50%;
+  right: 300px;
+  z-index: 1;
 }
 
 /* PROJECTS------------------------------------- */
@@ -174,11 +218,11 @@ aside {
   position: absolute;
 }
 
-body {
+#main-container {
   perspective: 0px;
   /* width: 400px;
   height: 400px; */
-  margin: 10px auto;
+  margin: auto;
 }
 main {
   width: 100%;

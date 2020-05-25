@@ -3,6 +3,7 @@
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
+  fetchLines();
   sideMenu();
   aside();
 }
@@ -35,4 +36,17 @@ function aside() {
     document.querySelector("main").classList.remove("revealAside");
     document.querySelector("main").classList.add("showMain");
   });
+}
+
+async function fetchLines() {
+  let response = await fetch("images/Lines.svg");
+  let mySVGData = await response.text();
+
+  document.querySelector(".intro-section").innerHTML += mySVGData;
+
+  // animateArrow();
+  for (let i = 1; i <= 10; i++) {
+    gsap.fromTo(`#Line${i}`, 10, { opacity: 1, transformOrigin: "left", strokeDashoffset: -2000, strokeDasharray: 1000 }, { opacity: 1, transformOrigin: "left", ease: "none", yoyo: true, repeat: -1, strokeDashoffset: 2000, delay: i });
+    console.log(`#Line${i}`);
+  }
 }
