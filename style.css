@@ -11,14 +11,26 @@
 html {
   overflow-x: hidden;
 }
+body {
+  height: 100vh;
+  width: 100vw;
+}
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 body,
 main {
   scroll-behavior: smooth;
 }
 
-body {
+/* body {
   padding: 10px;
-}
+} */
 
 .navigation {
   display: flex;
@@ -67,23 +79,23 @@ body {
 /* -------------------------------------------------- */
 /* NAV MENU-------------------------------------------------- */
 .navMenu {
+  display: block;
   width: 100vw;
-  height: 500px;
+  height: 0px;
   background-color: red;
-  position: fixed;
+  position: relative;
   z-index: 100;
-  left: 100vw;
-  top: var(--navHeight);
+
   transition: 0.5s;
-  border-radius: 50%;
-  padding: 10px;
-  overflow-y: scroll;
 }
 /* -------------------------------------------------- */
 
 body main {
   display: block;
-  position: relative;
+  /* position: relative; */
+  width: 100%;
+  /* transform-style: preserve-3d; */
+  transform-origin: left;
 }
 
 h1 {
@@ -93,7 +105,7 @@ h1 {
 }
 
 .intro-section {
-  height: calc(100vh - var(--navHeight));
+  height: 100vh;
   width: 100%;
   background-color: black;
   padding: 10px;
@@ -127,33 +139,57 @@ svg#Lines {
   height: 100%;
   bottom: 50%;
   right: 300px;
+  margin: auto;
   z-index: 1;
 }
 
 /* PROJECTS------------------------------------- */
 
-.project-container {
+.section-header {
+  display: block;
+  color: black;
+  background-color: white;
+  font-size: 30px;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  z-index: 0;
+}
+
+.header-cont::after {
+  content: "";
   display: block;
   position: relative;
+  right: 20px;
+  bottom: 30px;
+  background-color: black;
+  width: 50%;
+  height: 50px;
+  z-index: -1;
+  margin: auto;
+}
+
+.project-container {
+  display: block;
+  /* position: relative; */
   /* flex-direction: column; */
   height: 263px;
   width: 350px;
-  overflow: hidden;
-  border-radius: 10px;
+  /* overflow: hidden; */
   transition: 0.5s;
   /* top: 10px; */
-  background-color: yellow;
+  background-color: black;
   scroll-snap-align: start;
   margin: 50px auto;
+  color: white;
 }
 
 .image-container {
   width: 100%;
-  min-height: 200px;
+  height: 80%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #5458be;
 }
 
 #project1 .image-container {
@@ -178,14 +214,12 @@ svg#Lines {
   bottom: 0;
   align-items: center;
   padding: 10px;
-  background-color: #5458be;
-  color: white;
-  border-radius: 0px 0px 10px 10px;
   transition: 0.5s;
 }
 
 .project-title {
   width: 50%;
+  height: 20%;
   transition: inherit;
 }
 
@@ -207,66 +241,69 @@ svg#Lines {
   opacity: 0;
 }
 
-section.main-content,
-aside {
+section.main-content {
   /* height: 100vh;
   width: 100%; */
   width: 100%;
-  min-height: 1000px;
+  min-height: 100%;
   /* width: 100%;
   height: 100%; */
   position: absolute;
 }
 
-#main-container {
-  perspective: 0px;
-  /* width: 400px;
-  height: 400px; */
-  margin: auto;
-}
-main {
+#aside {
+  position: fixed;
+  bottom: 0;
+  left: 100%;
+  z-index: 100;
   width: 100%;
-  transform-style: preserve-3d;
-  transform-origin: left;
+  height: calc(100% - var(--navHeight));
 }
 
-section.main-content {
-  transform: translateZ(100%);
+#main-container {
+  /* perspective: 0px; */
+  /* width: 400px;
+  height: 400px; */
+}
+
+section.main-content,
+aside {
+  /* transform: translateZ(100%); */
 }
 aside {
   display: block;
-  transform: rotateY(90deg) translateX(100%);
-  transform-origin: right;
+  /* transform: translateX(100%); */
+  transform-origin: left;
   background-color: orange;
 }
 
 .revealMain {
-  animation: showMain 1s ease-out forwards;
+  animation: showMain 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .revealAside {
-  animation: showAside 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation: showAside 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 @keyframes showMain {
-  from {
-    transform: rotateY(-90deg);
+  0% {
+    left: 0%;
   }
-  to {
-    transform: rotateY(0deg);
+  100% {
+    left: 100%;
   }
 }
 
 @keyframes showAside {
   0% {
-    scale: 1;
-    transform: rotateY(0deg);
+    /* scale: 1; */
+    left: 100%;
   }
   30% {
-    scale: 0.7;
+    /* scale: 0.7; */
   }
   100% {
-    transform: rotateY(-90deg);
-    scale: 1;
+    left: 0%;
+    /* scale: 1; */
   }
 }

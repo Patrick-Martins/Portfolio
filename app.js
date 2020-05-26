@@ -18,7 +18,7 @@ function changeStatus(evt) {
   console.log(evt.target);
   const menuContainer = document.querySelector(".navMenu");
   console.log("left is " + menuContainer.style.left);
-  menuContainer.style.left == "0vw" ? ((menuContainer.style.left = "100vw"), (menuContainer.style.borderRadius = "50%")) : ((menuContainer.style.left = "0vw"), (menuContainer.style.borderRadius = "0"));
+  menuContainer.style.height === "500px" ? (menuContainer.style.height = "0px") : (menuContainer.style.height = "500px");
   console.log("left is " + menuContainer.style.left);
 
   //change to cross
@@ -33,8 +33,23 @@ function changeStatus(evt) {
 
 function aside() {
   document.querySelector("aside").addEventListener("click", () => {
-    document.querySelector("main").classList.remove("revealAside");
-    document.querySelector("main").classList.add("showMain");
+    document.querySelector("aside").classList.remove("revealAside");
+    document.querySelector("aside").classList.add("revealMain");
+  });
+  document.querySelectorAll(".project-container").forEach((project) => {
+    project.addEventListener("click", () => {
+      //append template
+      const template = document.querySelector(`#${project.dataset.projecttitle}`).content;
+      const clone = template.cloneNode(true);
+
+      //reset html text content
+      console.log(project.dataset.projecttitle);
+      document.querySelector("#aside").innerHTML = "";
+      document.querySelector("#aside").appendChild(clone);
+
+      document.querySelector("aside").classList.remove("revealMain");
+      document.querySelector("aside").classList.add("revealAside");
+    });
   });
 }
 
@@ -46,7 +61,12 @@ async function fetchLines() {
 
   // animateArrow();
   for (let i = 1; i <= 10; i++) {
-    gsap.fromTo(`#Line${i}`, 10, { opacity: 1, transformOrigin: "left", strokeDashoffset: -2000, strokeDasharray: 1000 }, { opacity: 1, transformOrigin: "left", ease: "none", yoyo: true, repeat: -1, strokeDashoffset: 2000, delay: i });
+    gsap.fromTo(
+      `#Line${i}`,
+      5 * Math.random() * 3 + 2,
+      { opacity: 1, transformOrigin: "left", strokeDashoffset: -2000, strokeDasharray: 1000, delay: i * Math.random() * 5 },
+      { opacity: 1, transformOrigin: "left", ease: "none", yoyo: true, repeat: -1, strokeDashoffset: 2000 }
+    );
     console.log(`#Line${i}`);
   }
 }
