@@ -6,6 +6,9 @@
 
 :root {
   --navHeight: 75px;
+  --header: 25px;
+  --subHeader: 20px;
+  --text: 12px;
 }
 
 html {
@@ -110,6 +113,7 @@ h1 {
   background-color: black;
   padding: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .intro-text {
@@ -134,11 +138,13 @@ h1 {
 
 svg#Lines {
   display: block;
-  position: relative;
-  width: 140%;
+  position: absolute;
+  width: 100vw;
   height: 100%;
-  bottom: 50%;
-  right: 300px;
+  /* bottom: 50%;
+  right: 300px; */
+  top: 0;
+  left: 0;
   margin: auto;
   z-index: 1;
 }
@@ -182,6 +188,8 @@ svg#Lines {
   scroll-snap-align: start;
   margin: 50px auto;
   color: white;
+  border: 5px solid black;
+  border-bottom: 0;
 }
 
 .image-container {
@@ -306,4 +314,67 @@ aside {
     left: 0%;
     /* scale: 1; */
   }
+}
+/* -------------------------------------------- */
+/*ABOUT -------------------------------------------- */
+.about-content {
+  width: 90%;
+  margin: auto;
+}
+.sub-header {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.facts-text {
+  /* border: 2px solid black; */
+  padding: 20px;
+  margin-bottom: 5px;
+  background-color: rgb(230, 230, 230);
+  background-color: black;
+  color: white;
+}
+
+/* HAVE FUN FACTS HEADING SWITCHING COLORS LIKE A RAINBOW */
+
+/* -------------------------------------------- */
+/* EXPERIENCE-------------------------------------------- */
+.experienceCard {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  /* align-items: center; */
+  flex-wrap: nowrap;
+  margin-top: 40px;
+
+  /* border: 2px solid black; */
+  padding: 5px;
+}
+
+.experience-image-container {
+  width: 40%;
+  margin: 20px auto;
+  /* margin: 0 10px; */
+}
+
+.experience-image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.experience-info {
+  display: block;
+  width: 100%;
+}
+
+/* -------------------------------------- */
+/* FOOTER-------------------------------------- */
+footer {
+  width: 100%;
+  min-height: 50px;
+  background-color: black;
+  color: white;
+  padding: 10px;
 }
