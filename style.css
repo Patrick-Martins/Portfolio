@@ -103,6 +103,7 @@ main {
   border: 2.5px solid white;
   border-radius: 50px;
   bottom: 0;
+  right: 0;
 }
 
 .ham_top,
@@ -427,9 +428,51 @@ aside {
     /* scale: 1; */
   }
 }
+/* PROJECT DETAILS ASIDE-------------------------------------------- */
+.links-container {
+  width: 50%;
+  display: flex;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tools {
+  font-weight: 400;
+  font-size: 15px;
+  color: rgb(83, 83, 83);
+}
+
+.links-container > a {
+  display: block;
+  width: 150px;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: 400;
+  text-align: center;
+  margin: 5px auto;
+  transition: all 0.2s;
+}
+
+.links-container > a:hover {
+  color: black;
+  background-color: rgb(129, 161, 221);
+}
+
+.project_title {
+  color: blue;
+}
+
+.project_subHeader {
+  font-size: 20px;
+}
+
 /* ASIDE -------------------*/
 aside {
   padding: 5%;
+  overflow: scroll;
 }
 
 /* -------------------------------------------- */
@@ -488,6 +531,55 @@ aside {
 }
 
 /* -------------------------------------- */
+
+/* CONTACT SECTION---------------------------- */
+#contact {
+  width: 100%;
+  margin: auto;
+  background-color: rgb(173, 198, 253);
+  /* color: white; */
+}
+#contact h1 {
+  text-align: center;
+  font-size: var(--header);
+}
+#contact p {
+  margin: 10px;
+}
+#contact .contact-email {
+  display: block;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: yellow;
+  margin: auto;
+  transition: all 0.2s;
+}
+
+#contact .contact-email:hover {
+  background-color: white;
+}
+
+.contact-social {
+  display: flex;
+  width: 170px;
+  margin: auto;
+  bottom: 0;
+  right: 0;
+}
+
+.contact-social a {
+  display: block;
+  width: 33%;
+  margin: 10px;
+}
+
+.contact-social a img {
+  display: flex;
+  width: 100%;
+}
 /* FOOTER-------------------------------------- */
 footer {
   width: 100%;
@@ -539,5 +631,13 @@ footer {
   #projects {
     width: 90%;
     margin: auto;
+  }
+
+  aside {
+    padding: 5px 20%;
+  }
+
+  #contact {
+    width: 60%;
   }
 }

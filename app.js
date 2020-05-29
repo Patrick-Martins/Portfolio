@@ -24,14 +24,23 @@ function changeStatus(evt) {
   console.log("left is " + menuContainer.style.left);
 
   //change to cross
-  const topBar = document.querySelector(".ham_top");
-  const bottomBar = document.querySelector(".ham_bottom");
+  // const topBar = document.querySelector(".ham_top");
+  // const bottomBar = document.querySelector(".ham_bottom");
   const hamburger = document.querySelector(".hamburguerIcon");
 
   hamburger.style.display = "block";
   if (hamburguerOpen === false) {
     hamburger.classList.add("open");
     hamburguerOpen = true;
+
+    //add event listener to each a tag
+
+    document.querySelectorAll(".navMenu").forEach((el) => {
+      el.addEventListener("click", () => {
+        const menuContainer = document.querySelector(".navMenu");
+        menuContainer.style.height = "0px";
+      });
+    });
   } else {
     hamburger.classList.remove("open");
     hamburguerOpen = false;
