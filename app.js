@@ -2,6 +2,8 @@
 
 window.addEventListener("DOMContentLoaded", init);
 
+let hamburguerOpen = false;
+
 function init() {
   fetchLines();
   sideMenu();
@@ -27,14 +29,22 @@ function changeStatus(evt) {
   const hamburger = document.querySelector(".hamburguerIcon");
 
   hamburger.style.display = "block";
-  topBar.style.transform = "rotate(-45deg)";
-  bottomBar.style.transform = "rotate(45deg)";
+  if (hamburguerOpen === false) {
+    hamburger.classList.add("open");
+    hamburguerOpen = true;
+  } else {
+    hamburger.classList.remove("open");
+    hamburguerOpen = false;
+  }
+  // topBar.classList.add("x-top");
+  // bottomBar.classList.add("x-bottom");
 }
 
 function aside() {
   document.querySelector("aside").addEventListener("click", () => {
     document.querySelector("aside").classList.remove("revealAside");
     document.querySelector("aside").classList.add("revealMain");
+    document.querySelector("html").classList.remove("noScroll");
   });
   document.querySelectorAll(".project-container").forEach((project) => {
     project.addEventListener("click", () => {
@@ -49,6 +59,7 @@ function aside() {
 
       document.querySelector("aside").classList.remove("revealMain");
       document.querySelector("aside").classList.add("revealAside");
+      document.querySelector("html").classList.add("noScroll");
     });
   });
 }
@@ -68,5 +79,9 @@ async function fetchLines() {
       { opacity: 1, transformOrigin: "left", ease: "none", yoyo: true, repeat: -1, strokeDashoffset: 2000 }
     );
     console.log(`#Line${i}`);
+
+    //FACTS ANIMATION
+
+    gsap.fromTo("#funFacts", 1, { color: "black" }, { color: "yellow", yoyo: true, repeat: -1 });
   }
 }
