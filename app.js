@@ -3,11 +3,19 @@
 window.addEventListener("DOMContentLoaded", init);
 
 let hamburguerOpen = false;
+let asideStatus = "hidden";
 
 function init() {
-  fetchLines();
+  initialAnimation();
+  setTimeout(fetchLines, 4000);
   sideMenu();
   aside();
+}
+
+function initialAnimation() {
+  gsap.fromTo("#helloText", 2, { opacity: 0 }, { opacity: 1, delay: 0.2 });
+  gsap.fromTo("#myName", 2, { opacity: 0 }, { opacity: 1, delay: 1 });
+  gsap.fromTo("#frontendText", 2, { opacity: 0 }, { opacity: 1, delay: 2 });
 }
 
 function sideMenu() {
@@ -39,6 +47,16 @@ function changeStatus(evt) {
       el.addEventListener("click", () => {
         const menuContainer = document.querySelector(".navMenu");
         menuContainer.style.height = "0px";
+        hamburger.classList.remove("open");
+        hamburguerOpen = false;
+
+        //hideaside
+        if (asideStatus === "showing") {
+          document.querySelector("aside").classList.remove("revealAside");
+          document.querySelector("aside").classList.add("revealMain");
+          document.querySelector("html").classList.remove("noScroll");
+          asideStatus = "hidden";
+        }
       });
     });
   } else {
@@ -50,20 +68,30 @@ function changeStatus(evt) {
 }
 
 function aside() {
-  document.querySelector("aside").addEventListener("click", () => {
-    document.querySelector("aside").classList.remove("revealAside");
-    document.querySelector("aside").classList.add("revealMain");
-    document.querySelector("html").classList.remove("noScroll");
-  });
   document.querySelectorAll(".project-container").forEach((project) => {
     project.addEventListener("click", () => {
+      asideStatus = "showing";
       //append template
       const template = document.querySelector(`#${project.dataset.projecttitle}`).content;
       const clone = template.cloneNode(true);
 
+      //create back arrow
+      const back = document.createElement("p");
+      back.classList.add("backArrow");
+      back.innerHTML = "&#8592;";
+
       //reset html text content
       console.log(project.dataset.projecttitle);
       document.querySelector("#aside").innerHTML = "";
+
+      document.querySelector("#aside").appendChild(back);
+      //add event to back arrow
+      document.querySelector(".backArrow").addEventListener("click", () => {
+        asideStatus = "hidden";
+        document.querySelector("aside").classList.remove("revealAside");
+        document.querySelector("aside").classList.add("revealMain");
+        document.querySelector("html").classList.remove("noScroll");
+      });
       document.querySelector("#aside").appendChild(clone);
 
       document.querySelector("aside").classList.remove("revealMain");
@@ -81,6 +109,7 @@ async function fetchLines() {
 
   // animateArrow();
   for (let i = 1; i <= 10; i++) {
+    gsap.fromTo("#Lines", 2, { opacity: 0 }, { opacity: 1, delay: 0 });
     gsap.fromTo(
       `#Line${i}`,
       5 * Math.random() * 3 + 2,
