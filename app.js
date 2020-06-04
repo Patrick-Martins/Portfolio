@@ -110,9 +110,10 @@ async function fetchLines() {
   // animateArrow();
   for (let i = 1; i <= 10; i++) {
     gsap.fromTo("#Lines", 2, { opacity: 0 }, { opacity: 1, delay: 0 });
+    console.log(5 * Math.random() * 3 + 2);
     gsap.fromTo(
       `#Line${i}`,
-      5 * Math.random() * 3 + 2,
+      5 * Math.random() * 3 + 5,
       { opacity: 1, transformOrigin: "left", strokeDashoffset: -2000, strokeDasharray: 1000, delay: i * Math.random() * 5 },
       { opacity: 1, transformOrigin: "left", ease: "none", yoyo: true, repeat: -1, strokeDashoffset: 2000 }
     );
